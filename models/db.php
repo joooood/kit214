@@ -1,9 +1,9 @@
 <?php
 
-$host = "localhost";
-$username = "kit214";
-$password = "O98TRGKgat4fkxNT";
-$db = "kit214";
+$host = getenv("DB_HOST");
+$username = getenv("DB_USER");
+$password = getenv("DB_PASS");
+$db = getenv("DB_NAME");
 
 $mysqli = new mysqli($host, $username, $password, $db);
 if (mysqli_connect_errno()) {
