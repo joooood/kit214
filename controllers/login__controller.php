@@ -3,8 +3,8 @@ session_start();
 include "../models/db.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? '';
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
     $select_user_by_email = $mysqli->prepare("SELECT * FROM users WHERE email=? LIMIT 1");
     $select_user_by_email->bind_param('s', $email);
@@ -13,8 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($selected_user && $selected_user->num_rows > 0) {
         $user = $selected_user->fetch_assoc();
-
-        if (password_verify($password, $user['password'])) {
+        $pepper = getenv('PEPPER');
+        if (password_verify($password . $pepper, $user['password'])) {
             unset($user['password']);
             $_SESSION['user'] = $user;
             header('Location: /index.php');

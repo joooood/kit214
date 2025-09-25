@@ -17,6 +17,9 @@ include "models/db.php";
         <div id="card__login" class="wrapper">
             <?php include "views/login__view.php" ?>
         </div>
+        <div id="card__register" class="wrapper">
+            <?php include "views/register__view.php" ?>
+        </div>
     </main>
 </body>
 
