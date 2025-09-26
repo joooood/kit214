@@ -1,0 +1,40 @@
+<?php
+session_start();
+require_once __DIR__ . "/../src/models/db.php";
+
+if (isset($_SESSION['user'])) {
+    header('Location: dashboard.php');
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['action']) && $_POST['action'] === 'login') {
+        include __DIR__ . "/../src/controllers/login__controller.php";
+    }
+    if (isset($_POST['action']) && $_POST['action'] === 'register') {
+        include __DIR__ . "/../src/controllers/register__controller.php";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+</head>
+
+<body>
+    <main id="homepage">
+        <div id="card__login" class="wrapper">
+            <?php include __DIR__ . "/../src/views/login__view.php" ?>
+        </div>
+        <div id="card__register" class="wrapper">
+            <?php include __DIR__ . "/../src/views/register__view.php" ?>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,9 +1,9 @@
-<form method="post" action="/controllers/login__controller.php">
+<form method="post" action="">
     <input type="text" id="email" name="email" placeholder="email" required>
     <br>
     <input type="password" id="password" name="password" placeholder="password" required>
     <br>
-    <button type="submit">Login</button>
+    <button type="submit" name="action" value="login">Login</button>
 </form>
 <?php
 if (isset($_SESSION['error'])) {
