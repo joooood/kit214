@@ -24,8 +24,9 @@ if (!isset($_SESSION['initiated'])) {
 }
 
 if (isset($_SESSION['last_activity'])) {
-    if (time() - $_SESSION['last_activity'] > $limit) {
-        logout();
+    if (time() - $_SESSION['last-activity'] > $limit) {
+        session_unset();
+        session_destroy();
         header('Location: index.php');
         exit();
     }
