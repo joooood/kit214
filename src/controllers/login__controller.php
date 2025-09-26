@@ -1,6 +1,5 @@
 <?php
-session_start();
-require_once __DIR__ . "/../src/models/db.php";
+require_once __DIR__ . "/../models/db.php";
 
 $email = $_POST['email'];
 $password = $_POST['password'];
