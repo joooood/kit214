@@ -15,10 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             require_once __DIR__ . "/../src/controllers/login__controller.php";
             exit;
         case 'logout':
-            require_once __DIR__ . "/../src/controllers/register__controller.php";
+            require_once __DIR__ . "/../src/controllers/logout__controller.php";
             exit;
         case 'register':
-            require_once __DIR__ . "/../src/controllers/logout__controller.php";
+            require_once __DIR__ . "/../src/controllers/register__controller.php";
             exit;
     }
 }
