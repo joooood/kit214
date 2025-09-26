@@ -1,6 +1,6 @@
 <?php
-session_start();
-require_once __DIR__ . "/../models/db.php";
+include __DIR__ .
+    require_once __DIR__ . "/../models/db.php";
 require_once __DIR__ . "/../services/thesaurus__service.php";
 require_once __DIR__ . "/../services/jokes__service.php";
 
