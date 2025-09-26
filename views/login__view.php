@@ -1,5 +1,5 @@
 <form method="post" action="/controllers/login__controller.php">
-    <input type="text" id="username" name="username" placeholder="email" required>
+    <input type="text" id="email" name="email" placeholder="email" required>
     <br>
     <input type="password" id="password" name="password" placeholder="password" required>
     <br>
