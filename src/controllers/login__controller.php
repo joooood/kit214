@@ -16,6 +16,8 @@ if ($selected_user && $selected_user->num_rows > 0) {
     if (password_verify($password . $pepper, $user['password'])) {
         unset($user['password']);
         $_SESSION['user'] = $user;
+        error_log("User logged in: " . $user['email']);
+        error_log("Session user data: " . print_r($_SESSION['user'], true));
         header('Location: /dashboard.php');
         exit;
     }
