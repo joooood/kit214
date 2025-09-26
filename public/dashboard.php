@@ -13,4 +13,3 @@ if (isset($_POST['action']) && $_POST['action'] === 'logout') {
 
 <main id="dashboard">
     <?php include __DIR__ . '/../src/views/logout__view.php' ?>
-</main>
