@@ -11,11 +11,11 @@ class ThesaurusService
 
     public function __construct()
     {
-        $this->client = new Client(['base_uri' => "https://{$this->host}/", 'verify' => false]);
+        $this->client = new Client(['base_uri' => "https://{$this->host}/"]);
         $this->key = getenv('WORDS_API_KEY');
     }
 
-    public function getSynonyms(string $word): array
+    public function getSynonyms(string $word)
     {
         if (empty($word))
             return [];
@@ -27,14 +27,13 @@ class ThesaurusService
                     "headers" => [
                         'X-RapidAPI-Key' => $this->key,
                         'X-RapidAPI-Host' => $this->host,
-                    ]
+                    ],
                 ],
             );
             $data = json_decode($response->getBody()->getContents(), true);
             return $data['synonyms'] ?? [];
         } catch (\Exception $e) {
-            error_log("ThesaurusService error: " . $e->getMessage());
-            return [];
+            return null;
         }
     }
 }

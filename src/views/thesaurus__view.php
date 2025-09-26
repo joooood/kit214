@@ -1,6 +1,8 @@
 <h2>Synonyms of <?= htmlspecialchars($user['thesaurus']) ?></h2>
 
-<?php if (empty($synonyms)): ?>
+<?php if ($synonyms === null): ?>
+    <p>Error fetching synonyms. Please try again later.</p>
+<?php elseif (empty($synonyms)): ?>
     <p>Loading...</p>
 <?php else: ?>
     <ul>
