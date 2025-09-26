@@ -8,14 +8,18 @@ if (isset($_SESSION['user'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['action']) && $_POST['action'] === 'login') {
-        include __DIR__ . "/../src/controllers/login__controller.php";
-    }
-    if (isset($_POST['action']) && $_POST['action'] === 'register') {
-        include __DIR__ . "/../src/controllers/register__controller.php";
-    }
-    if (isset($_POST['action']) && $_POST['action'] === 'logout') {
-        include __DIR__ . "/../src/controllers/logout__controller.php";
+    $action = $_POST['action'];
+
+    switch ($action) {
+        case 'login':
+            require_once __DIR__ . "/../src/controllers/login__controller.php";
+            exit;
+        case 'logout':
+            require_once __DIR__ . "/../src/controllers/register__controller.php";
+            exit;
+        case 'register':
+            require_once __DIR__ . "/../src/controllers/logout__controller.php";
+            exit;
     }
 }
 ?>
