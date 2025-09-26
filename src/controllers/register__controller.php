@@ -3,6 +3,8 @@ require_once __DIR__ . "/../models/db.php";
 
 $email = $_POST['email'];
 $password = $_POST['password'];
+$favourite_movies = $_POST['favourite_movies'];
+$thesaurus = $_POST['thesaurus'];
 
 $pepper = getenv('PEPPER');
 $hashed = password_hash($password . $pepper, PASSWORD_BCRYPT);
@@ -18,8 +20,8 @@ if ($existing_users->num_rows > 0) {
     exit();
 }
 
-$insertion = $mysqli->prepare("INSERT INTO users (email, password) VALUES (?, ?)");
-$insertion->bind_param("ss", $email, $hashed);
+$insertion = $mysqli->prepare("INSERT INTO users (email, password, favourite_movies, thesaurus) VALUES (?, ?, ?, ?)");
+$insertion->bind_param("ssss", $email, $hashed, $favourite_movies, $thesaurus);
 
 if ($insertion->execute()) {
     $_SESSION['success'] = "Registration successful. Please log in.";
