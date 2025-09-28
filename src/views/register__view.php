@@ -1,5 +1,5 @@
 <form method="post" action="">
-    <input type="text" id="email" name="email" placeholder="email" required>
+    <input type="text" id="username" name="username" placeholder="username" required>
     <input type="password" id="password" name="password" placeholder="password" required>
     <label for="favourite_movies">Favourite Movies:</label>
     <input type="text" id="favourite_movies" name="favourite_movies" required>

@@ -6,11 +6,14 @@ error_reporting(E_ALL);
 
 include __DIR__ . "/../src/session.php";
 require_once __DIR__ . "/../src/models/db.php";
+require_once __DIR__ . '/../src/services/logging__service.php';
 
 if (isset($_SESSION['user'])) {
+    $logger->log($_SESSION['user'] ?? null, false);
     header('Location: dashboard.php');
-    exit();
+    exit;
 }
+$logger->log($_SESSION['user'] ?? null, true);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'];

@@ -1,11 +1,11 @@
 <?php
 require_once __DIR__ . "/../models/db.php";
 
-$email = $_POST['email'];
+$username = $_POST['username'];
 $password = $_POST['password'];
 
-$select_user = $mysqli->prepare("SELECT * FROM users WHERE email=? LIMIT 1");
-$select_user->bind_param('s', $email);
+$select_user = $mysqli->prepare("SELECT * FROM users WHERE username=? LIMIT 1");
+$select_user->bind_param('s', $username);
 $select_user->execute();
 $selected_user = $select_user->get_result();
 
@@ -22,7 +22,7 @@ if ($selected_user && $selected_user->num_rows > 0) {
     }
 }
 
-$_SESSION['error'] = 'Invalid email or password';
+$_SESSION['error'] = 'Invalid username or password';
 header('Location: /index.php');
 exit;
 
